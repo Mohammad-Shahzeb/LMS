@@ -1,15 +1,51 @@
 ﻿@model LibraryManagementSystem.Models.LoginModel
 
-<h3>Staff Login</h3>
+
+
+
+<div style="height: 100%">
+<h3 style="text-align: center">Staff Login</h3>
+
+<div class="text-center">
+        @if (ViewBag.message is not null)
+        {
+            <span class="text-danger">@ViewBag.message</span>
+        }
+</div>
+
 
 <form asp-action="StaffLogin" method="post">
-    Email :<input type="email" class="form-control" asp-for="Email"/>
-    Password :<input type="password" class="form-control" asp-for="Password"/>
 
-    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    <div class="row">
+
+        <div class="col-4">
+
+        </div>
+        <div class=" col-4">
+            <div>
+                Email :<input type="email" class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div>
+                Password :<input type="password" class="form-control" asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div  style="text-align: center;">
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </div>
+        </div>
+       
+
+       
+
+    </div>
+
+
 </form>
+</div>
 
-
-
-
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 

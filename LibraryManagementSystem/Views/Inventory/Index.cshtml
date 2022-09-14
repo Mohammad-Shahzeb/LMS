@@ -1,5 +1,12 @@
 ﻿@model List<LibraryManagementSystem.EF_Models.LmsInventory>
 
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+
 <form asp-action="Index">
     <div class="row">
         <div class="col-3">
@@ -44,6 +51,7 @@
 <table class="table">
     <theah>
         <tr>
+            <td>Book Image</td>
             <td>Book Title</td>
             <td>Book Author</td>
             <td>Book Version</td>
@@ -58,6 +66,15 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+
+                        <img src="/InventoryImages/@item.ImagePath" style="width:40px" height="40px" />
+
+                    }
+
+                </td>
                 <td>@item.BookTitle</td>
                 <td>@item.BookAuthor</td>
                 <td>@item.BookVersion</td>

@@ -22,6 +22,7 @@ namespace LibraryManagementSystem.Controllers
 
             if(result is null)
             {
+                ViewBag.message = "Entered Email or Password was incorrect";
                 return View(model);
             }
             //

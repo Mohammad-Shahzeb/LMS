@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.Controllers
 {
-   
+    [StaffUserAuth]
     public class InventoryHistoryController : Controller
     {
         private readonly LMS_Context _context = new LMS_Context();

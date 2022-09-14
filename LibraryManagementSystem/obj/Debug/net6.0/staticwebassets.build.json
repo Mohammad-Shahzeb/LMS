@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WAevUjF7PGFfT4xydlrFoXw3tsaWc8q/iYJ6fLG6Fxc=",
+  "Hash": "/dZ/HOc+o1LeNjD+raqYNOYLq+dF6QngJvirhLKf8YM=",
   "Source": "LibraryManagementSystem",
   "BasePath": "_content/LibraryManagementSystem",
   "Mode": "Default",
@@ -100,6 +100,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\InventoryImages\\637987654269192851images (3).jpg",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "InventoryImages/637987654269192851images (3).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\InventoryImages\\637987654269192851images (3).jpg"
+    },
+    {
+      "Identity": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\InventoryImages\\637987661503097216download (1).jpg",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "InventoryImages/637987661503097216download (1).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\InventoryImages\\637987661503097216download (1).jpg"
     },
     {
       "Identity": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\js\\site.js",

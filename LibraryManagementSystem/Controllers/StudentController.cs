@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Controllers
 {
-    
+    [StaffUserAuth]
     public class StudentController : Controller
     {
         private readonly LMS_Context _context = new LMS_Context();
@@ -17,7 +17,6 @@ namespace LibraryManagementSystem.Controllers
         //{
         //    _webHostEnvironment = webHostEnvironment;
         //}
-        [StudentUserAuth]
         public IActionResult Get_Student_list()
         {
             var list = _context.LmsStudents.OrderByDescending(a => a.CreatedDate).ToList();

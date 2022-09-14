@@ -1,7 +1,10 @@
-﻿namespace LibraryManagementSystem.Models
+﻿
+namespace LibraryManagementSystem.Models
 {
+    
     public class StaffSearchModel
     {
+        
         public string? FirstName { get; set; } = null;
 
         public string? LastName { get; set; } = null;

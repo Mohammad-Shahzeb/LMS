@@ -1,10 +1,12 @@
 ﻿using LibraryManagementSystem.EF_Models;
+using LibraryManagementSystem.Filters;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 namespace LibraryManagementSystem.Controllers
 {
+    [StaffUserAuth]
     public class InventoryController : Controller
     {
         private readonly LMS_Context _Context = new LMS_Context();
@@ -12,7 +14,7 @@ namespace LibraryManagementSystem.Controllers
 
         public IActionResult Index()
         {
-            var inventory = _Context.LmsInventories.ToList();
+            var inventory = _Context.LmsInventories.OrderByDescending(a=> a.CreatedDate).ToList();
             return View(inventory);
         }
         [HttpPost]
@@ -58,9 +60,43 @@ namespace LibraryManagementSystem.Controllers
             return View();
         }
 
+        public string SaveFileToFolder(IFormFile file, string filepath)
+        {
+            using (Stream filestream = new FileStream(filepath, FileMode.Create))
+            {
+                file.CopyToAsync(filestream);
+            }
+            return string.Empty;
+        }
+
         [HttpPost]
         public IActionResult Create_Inventory(LmsInventory inventory)
         {
+
+            string path = "wwwroot/InventoryImages";
+            
+            var files = Request.Form.Files;
+
+            if(files.Count > 0)
+            {
+                var file = files["ImagePath"];
+
+                if(file.Length > 0)
+                {
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    inventory.ImagePath = DateTime.Now.Ticks.ToString() + file.FileName;
+                    path = Path.Combine(path, inventory.ImagePath);
+
+                    using (Stream filestream = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyTo(filestream);
+                    }
+                }
+            }
+
             try
             {
                 inventory.CreatedDate = DateTime.Now;

@@ -1,8 +1,10 @@
 ﻿using LibraryManagementSystem.EF_Models;
+using LibraryManagementSystem.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Controllers
 {
+    [StaffUserAuth]
     public class DefaultSystemSettingController : Controller
     {
         private readonly LMS_Context _context = new LMS_Context();
