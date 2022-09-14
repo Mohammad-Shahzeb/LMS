@@ -1,0 +1,19 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsStaff
+
+<h3>Create Staff</h3>
+
+<form asp-controller="Staff" asp-action="Edit">
+    <input type="hidden" asp-for="Id" /><br />
+    <input type="hidden" asp-for="CreatedDate" /><br />
+    <label>First Name:</label><br />
+    <input type="text" asp-for="FirstName" /><br />
+    <label>last Name:</label><br />
+    <input type="text" asp-for="LastName" /><br />
+    <label> Email:</label><br />
+    <input type="email" asp-for="Email" /><br />
+    <label>Password:</label><br />
+    <input type="text" asp-for="Password" /><br />
+
+    <button class="btn btn-primary" type="submit" >Submit</button>
+    <button asp-action="Index" class="btn btn-info">Cancel</button>
+</form>

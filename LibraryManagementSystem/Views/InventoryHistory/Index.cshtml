@@ -1,0 +1,111 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsInventoryHistory>
+
+
+
+<a asp-action="Create_InventoryHistory" class="btn btn-info text-white">Add <i class="fa fa-plus"></i></a>
+
+<form asp-action="Index">
+    <div class="row">
+
+        <div class="col-3">
+            Student Name: <input type="text" class="form-control" name="StudentName" />
+        </div>
+        <div class="col-3">
+            Staff Name: <input class="form-control" type="text" name="StaffName" />
+        </div>
+        <div class="col-3">
+            Inventory Title Name: <input class="form-control" type="text" name="InventoryTitle" />
+        </div>
+        <div class="col-3">
+            Entry type 
+
+            <select class="form-control" name="EntryType">
+                <option value="">---Select---</option>
+                <option value="1">Issued</option>
+                <option value="2">Returned</option>
+            </select>
+
+
+        </div>
+
+        <div class="col-3">
+            From Date: <input class="form-control" type="date" name="FromDate" />
+        </div>
+
+        <div class="col-3">
+            To Date: <input class="form-control" type="date" name="ToDate" />
+        </div>
+
+
+
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+        </div>
+
+        <div class="col-2">
+            <a asp-action="Index" class="text-white btn btn-danger btn-sm">Reset</a>
+        </div>
+
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Actions</td>
+            <td>Id</td>
+            <td>Student</td>
+            <td>Staff</td>
+            <td>Iventory</td>
+            <td>Entry Type</td>
+            <td>Fine Collected</td>
+            <td>Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+                    <a asp-action="InventoryTimeline" asp-route-inventoryId="@item.InventoryId"> <i class="fa fa-pencil"></i> </a>
+                </td>
+                <td>@item.Id</td>
+                <td>@item.Student.FirstName</td>
+                <td>@item.Staff.FirstName</td>
+                <td>@item.Inventory.BookTitle</td>
+                <td>
+                    @if (item.EntryType == "1")
+                    {
+                        <span>
+                            Issued
+                        </span>
+                    }
+                    else if (item.EntryType == "2")
+                    {
+                        <span>
+                            Return
+                        </span>
+                    }
+
+                </td>
+                <td>
+                    @if (item.EntryType == "1")
+                    {
+                        <span>
+                            Not Applicable
+                        </span>
+                    }
+                    else if (item.EntryType == "2")
+                    {
+                        <spam>@item.FineCollected</spam>
+                    }
+
+
+                </td>
+                <td>@item.CreatedDate</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

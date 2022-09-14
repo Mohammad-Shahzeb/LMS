@@ -1,0 +1,10 @@
+﻿@model LibraryManagementSystem.Models.LoginModel
+
+<h3>Student Login</h3>
+
+<form asp-action="StudentLogin" method="post">
+    Email:<input type="email" class="form-control" asp-for="Email"/>
+    Password:<input type="password" class="form-control" asp-for="Password"/>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>

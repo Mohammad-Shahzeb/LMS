@@ -1,0 +1,33 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsInventory
+
+<h3>Create Inventory</h3>
+<form asp-action="Create_Inventory" enctype="multipart/form-data">
+
+    <label>BookTitle:</label><br />
+    <input type="text" asp-for="BookTitle"/><br />
+    <label>Book Author:</label><br />
+    <input type="text" asp-for="BookAuthor" /><br />
+    <label>Book Version:</label><br />
+    <input type="text" asp-for="BookVersion" /><br />
+    <label>Book Code:</label><br />
+    <input type="text" asp-for="BookCode" /><br />
+    <label>Book Genre:</label><br />
+    <input type="text" asp-for="BookGenre" /><br />
+    <label>Is Issued:</label><br />
+    <input type="text" asp-for="IsIssued" /><br />
+
+    <div class="form-group">
+        <label asp-for="ImagePath" class="control-label"></label>
+        <input type="file" asp-for="ImagePath" class="form-control"/>
+        <span asp-validation-for="CreatedDate" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a asp-action="Index" class="btn btn-info">Cancel</a>
+   
+
+</form>
+
+
+
+

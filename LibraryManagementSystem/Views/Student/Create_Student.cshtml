@@ -1,0 +1,30 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsStudent
+
+<h3>
+    Create a student
+</h3>
+
+<form asp-action="Create_Student" enctype="multipart/form-data">
+    <label>First Name:</label><br/>
+    <input type="text" asp-for="FirstName"  /><br />
+    <label>Last Name:</label><br />
+    <input type="text" asp-for="LastName" /><br />
+    <label>Roll NO:</label><br />
+    <input type="text" asp-for="RollNo" /><br />
+    <label>Batch:</label><br />
+    <input type="text" asp-for="Batch" /><br />
+    <label>Email:</label><br />
+    <input type="Email" asp-for="Email" /><br />
+    <label>Password:</label><br />
+    <input type="password" asp-for="Password" /><br />
+
+    <div class="form-group">
+        <label asp-for="ImagePath" class="control-label"></label>
+        <input type="file" asp-for="ImagePath" class="form-control" />
+        <span asp-validation-for="CreatedDate" class="text-danger"></span>
+    </div>
+ 
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a asp-action="Get_Student_List" class="btn btn-info">Cancel</a>
+
+</form> 

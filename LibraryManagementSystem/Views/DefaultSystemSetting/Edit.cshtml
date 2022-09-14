@@ -1,0 +1,15 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsDefaultSystemSetting
+
+<h3>Edit Default Page</h3>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id"/>
+    <label>Issued Period:</label><br />
+    <input type="number" asp-for="IssuedPeriod" /><br />
+    <label>Fine Per Day:</label><br />
+    <input type="text" asp-for="FinePerDay" /><br />
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary ">Submit</button>
+        <a asp-action="Index" class="btn btn-info" style="margin-left: 10px;">Cancel</a>
+    </div>
+</form>

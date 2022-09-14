@@ -1,0 +1,87 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsStaff>
+
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+
+<form asp-action="Index">
+    <div class="row">
+        <div class="col-2">
+            First Name:<input type="text" class="form-control" name="FirstName"/>
+        </div>
+
+        <div class="col-2">
+            Last Name:<input type="text" class="form-control" name="LastName"/>
+        </div>
+
+        <div class="col-2">
+            Email:<input type="email" class="form-control" name="Email"/>
+        </div>
+
+        <div class="col-2">
+            From Date:<input type="date" class="form-control" name="FromDate"/>
+        </div>
+
+        <div class="col-2">
+            To Date:<input type="date" class="form-control" name="ToDate"/>
+        </div>
+
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            <a asp-action="Index" class="btn btn-danger btn-sm">Reset</a>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+<h3>List of Staffs</h3>
+<a asp-action="Create_staff" class="btn btn-info">Add Staff</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Image</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Date</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+
+                        <img src="/StaffImages/@item.ImagePath" style="width:40px" height="40px" />
+
+                    }
+
+                </td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.CreatedDate</td>
+                <td>
+                    <a asp-action="Delete" asp-route-shazz = "@item.Id" onclick="return confirm('Are you sure to delete this staff:@item.FirstName')">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-cr = "@item.Id" onclick="return confirm('Are you sure to edit this staff:@item.FirstName')">
+                        <i class="fa fa-pencil "></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

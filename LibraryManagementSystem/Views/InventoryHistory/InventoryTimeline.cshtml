@@ -1,0 +1,60 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsInventoryHistory>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Student Id</td>
+            <td>Staff Id</td>
+            <td>Iventory Id</td>
+            <td>Entry Type</td>
+            <td>Fine Collected</td>
+            <td>Created Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Student.FirstName</td>
+                <td>@item.Staff.FirstName</td>
+                <td>@item.Inventory.BookTitle</td>
+                <td>
+                    @if (item.EntryType == "1")
+                    {
+                        <span>
+                            Issued
+                        </span>
+                    }
+                    else if (item.EntryType == "2")
+                    {
+                        <span>
+                            Return
+                        </span>
+                    }
+
+                </td>
+                <td>
+                    @if (item.EntryType == "1")
+                    {
+                        <span>
+                            Not Applicable
+                        </span>
+                    }
+                    else if (item.EntryType == "2")
+                    {
+                        <spam>@item.FineCollected</spam>
+                    }
+
+
+                </td>
+                <td>@item.CreatedDate</td>
+            </tr>
+        }
+    </tbody>
+    <a asp-action="Index" class="btn btn-info">Cancel</a>
+    
+</table>

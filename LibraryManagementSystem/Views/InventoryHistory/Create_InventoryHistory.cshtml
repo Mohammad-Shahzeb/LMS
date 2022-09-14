@@ -1,0 +1,30 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsInventoryHistory
+
+<h3>Inventory History</h3>
+
+<form asp-action="Create_InventoryHistory">
+
+<label>Student Id:</label><br />
+
+    <select asp-for="StudentId"class = "form-control" asp-items="ViewBag.StudentId"></select>
+<label>Staff Id:</label><br />
+
+    <select asp-for="StaffId" class="form-control" asp-items="ViewBag.StaffId"></select>
+<label>Inventory Id:</label><br />
+
+    <select asp-for="InventoryId" class="form-control" asp-items="ViewBag.InventoryId"></select>
+<label>Entry Type:</label><br />
+
+<select asp-for="EntryType">
+    <option value="1">Issue</option>
+    <option value="2">Return</option>
+</select>
+
+<br />
+<label>Fine Collected:</label><br />
+<input type="text" asp-for="FineCollected" /><br />
+
+<button class="btn btn-primary" type="submit">Submit</button>
+<a asp-action="Index" class="btn btn-info">Cancel</a>
+</form>
+        

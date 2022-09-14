@@ -1,0 +1,26 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsStudent
+
+<h3>
+    Edit a student
+</h3>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" /><br />
+    <input type="hidden" asp-for="CreatedDate" /><br />
+    <label>First Name:</label><br/>
+    <input type="text" asp-for="FirstName"  /><br />
+    <label>Last Name:</label><br />
+    <input type="text" asp-for="LastName" /><br />
+    <label>Roll NO:</label><br />
+    <input type="text" asp-for="RollNo" /><br />
+    <label>Batch:</label><br />
+    <input type="text" asp-for="Batch" /><br />
+    <label>Email:</label><br />
+    <input type="Email" asp-for="Email" /><br />
+    <label>Password:</label><br />
+    <input type="text" asp-for="Password" /><br />
+ 
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a asp-action="Get_Student_List" class="btn btn-info">Cancel</a>
+
+</form> 
