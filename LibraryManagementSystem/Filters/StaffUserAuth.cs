@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using LibraryManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -14,7 +15,7 @@ namespace LibraryManagementSystem.Filters
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
 
-            var result = filterContext.HttpContext.Session.GetInt32("StaffId");
+            var result = filterContext.HttpContext.Session.GetInt32(SessionKeys.StaffId);
             
             if (result is  null)
             {

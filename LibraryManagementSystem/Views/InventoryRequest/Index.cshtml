@@ -1,0 +1,30 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsInventoryRequest>
+
+<h3>Inventory Request</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>StudentId</td>
+            <td>InventoryId</td>
+            <td>RequestDate</td>
+            <td>Status</td>
+            <td>StaffId</td>
+            <td>ModifiedDate</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StudentId</td>
+                <td>@item.InventoryId</td>
+                <td>@item.RequestDate</td>
+                <td>@item.Status</td>
+                <td>@item.StaffId</td>
+                <td>@item.ModifiedDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Student" asp-action="AvailbleInventory" class="btn btn-info">Request Inventory</a>

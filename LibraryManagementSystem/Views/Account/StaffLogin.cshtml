@@ -3,7 +3,7 @@
 
 
 
-<div style="height: 100%">
+<div>
 <h3 style="text-align: center">Staff Login</h3>
 
 <div class="text-center">
@@ -23,15 +23,16 @@
         </div>
         <div class=" col-4">
             <div>
-                Email :<input type="email" class="form-control" asp-for="Email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                    <input type="email" class="form-control" placeholder="Email Address" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"  ></span>
             </div>
             <div>
-                Password :<input type="password" class="form-control" asp-for="Password" />
+                    <input type="password" class="form-control" placeholder="Password" asp-for="Password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div  style="text-align: center;">
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <div  class="text-center mt-3">
+            <button type="submit" class="btn btn-primary ">Submit</button>
+                    <a asp-action="StudentLogin" class="btn btn-primary">Student Login</a>
             </div>
         </div>
        

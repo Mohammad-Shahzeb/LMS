@@ -18,7 +18,9 @@ namespace LibraryManagementSystem.EF_Models
 
         public virtual DbSet<LmsDefaultSystemSetting> LmsDefaultSystemSettings { get; set; } = null!;
         public virtual DbSet<LmsInventory> LmsInventories { get; set; } = null!;
+        public virtual DbSet<LmsInventoryCode> LmsInventoryCodes { get; set; } = null!;
         public virtual DbSet<LmsInventoryHistory> LmsInventoryHistories { get; set; } = null!;
+        public virtual DbSet<LmsInventoryRequest> LmsInventoryRequests { get; set; } = null!;
         public virtual DbSet<LmsStaff> LmsStaffs { get; set; } = null!;
         public virtual DbSet<LmsStudent> LmsStudents { get; set; } = null!;
 
@@ -46,8 +48,6 @@ namespace LibraryManagementSystem.EF_Models
 
                 entity.Property(e => e.BookAuthor).HasMaxLength(50);
 
-                entity.Property(e => e.BookCode).HasMaxLength(50);
-
                 entity.Property(e => e.BookGenre).HasMaxLength(50);
 
                 entity.Property(e => e.BookTitle).HasMaxLength(50);
@@ -55,6 +55,19 @@ namespace LibraryManagementSystem.EF_Models
                 entity.Property(e => e.BookVersion).HasMaxLength(50);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.BookCodeNavigation)
+                    .WithMany(p => p.LmsInventories)
+                    .HasForeignKey(d => d.BookCode)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_LMS_Inventory_LMS_Inventory");
+            });
+
+            modelBuilder.Entity<LmsInventoryCode>(entity =>
+            {
+                entity.ToTable("LMS_InventoryCode");
+
+                entity.Property(e => e.Code).HasMaxLength(5);
             });
 
             modelBuilder.Entity<LmsInventoryHistory>(entity =>
@@ -84,6 +97,32 @@ namespace LibraryManagementSystem.EF_Models
                     .HasConstraintName("FK_LMS_InventoryHistory_LMS_Student");
             });
 
+            modelBuilder.Entity<LmsInventoryRequest>(entity =>
+            {
+                entity.ToTable("Lms_InventoryRequest");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.RequestDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Inventory)
+                    .WithMany(p => p.LmsInventoryRequests)
+                    .HasForeignKey(d => d.InventoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Lms_InventoryRequest_LMS_Inventory");
+
+                entity.HasOne(d => d.Staff)
+                    .WithMany(p => p.LmsInventoryRequests)
+                    .HasForeignKey(d => d.StaffId)
+                    .HasConstraintName("FK_Lms_InventoryRequest_LMS_Staff");
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.LmsInventoryRequests)
+                    .HasForeignKey(d => d.StudentId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Lms_InventoryRequest_LMS_Student");
+            });
+
             modelBuilder.Entity<LmsStaff>(entity =>
             {
                 entity.ToTable("LMS_Staff");
@@ -106,6 +145,8 @@ namespace LibraryManagementSystem.EF_Models
                 entity.Property(e => e.Batch).HasMaxLength(50);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.DueFine).HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.Email).HasMaxLength(50);
 

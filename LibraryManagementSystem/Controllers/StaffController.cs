@@ -2,6 +2,7 @@
 using LibraryManagementSystem.Filters;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 
@@ -9,7 +10,7 @@ namespace LibraryManagementSystem.Controllers
 {
     public class StaffController : Controller
     {
-        
+
         private readonly LMS_Context _context = new LMS_Context();
         [StaffUserAuth]
         public IActionResult Index()
@@ -138,16 +139,115 @@ namespace LibraryManagementSystem.Controllers
             }
             return View();
         }
+        public string UpdateFileToFolder(IFormFile file, string filepath)
+        {
+            using (Stream filestream = new FileStream(filepath, FileMode.Create))
+            {
+                file.CopyToAsync(filestream);
+            }
+
+            return String.Empty;
+        }
 
         [HttpPost]
         public IActionResult Edit(LmsStaff cr)
         {
+            string path = "wwwroot/staffImages";
 
+
+            var files = Request.Form.Files;
+
+            if (files.Count > 0)
+            {
+                var file = files["ImagePath"];
+
+                if (file.Length > 0)
+                {
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    cr.ImagePath = DateTime.Now.Ticks.ToString() + file.FileName;
+                    path = Path.Combine(path, cr.ImagePath);
+
+                    using (Stream filestream = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyTo(filestream);
+                    }
+                }
+
+            }
 
             _context.Update(cr);
             _context.SaveChanges();
             return RedirectToAction("Index");
 
+        }
+
+        public IActionResult allRequests()
+        {
+            var list = _context.LmsInventoryRequests.Include(a => a.Inventory).Include(a => a.Student).Include(a => a.Staff);
+            return View(list.ToList());
+        }
+
+        public IActionResult updateRequest(int requestId, int ActionId)
+        {
+
+            var StaffId = HttpContext.Session.GetInt32(SessionKeys.StaffId);
+            var request = _context.LmsInventoryRequests.FirstOrDefault(a => a.Id == requestId);
+
+            if (ActionId == 2)
+            {
+                try
+                {
+                    request.Status = 2;
+                    request.StaffId = StaffId;
+                    request.ModifiedDate = DateTime.Now;
+
+
+                    var inventory = _context.LmsInventories.FirstOrDefault(a => a.Id == request.InventoryId);
+
+                    if (inventory is not null)
+                    {
+                        inventory.IsIssued = true;
+
+
+                        LmsInventoryHistory history = new LmsInventoryHistory()
+                        {
+
+                            CreatedDate = DateTime.Now,
+                            EntryType = "1", // 1 for issue
+                            FineCollected = 0,
+                            InventoryId = inventory.Id,
+                            StudentId = request.StudentId,
+                            StaffId = StaffId ?? 0,
+
+                        };
+                        _context.Add(history);
+                    }
+
+
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+
+            }
+            else if (ActionId == 3)
+            {
+                request.Status = 3;
+                request.StaffId = StaffId;
+                request.ModifiedDate = DateTime.Now;
+
+            }
+            _context.SaveChanges();
+
+
+
+            return RedirectToAction("allRequests");
         }
 
     }

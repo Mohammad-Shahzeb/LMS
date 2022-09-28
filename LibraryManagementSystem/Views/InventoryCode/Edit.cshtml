@@ -1,0 +1,19 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsInventoryCode
+
+<h3>Edit Book Code</h3>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" /><br />
+    <label>Book Code:</label><br />
+    <input type="text" class="form-control" asp-for="Code" />
+    <span asp-validation-for="Code"></span>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a asp-action="Index" class="btn btn-info">Cancel</a>
+</form>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    
+}

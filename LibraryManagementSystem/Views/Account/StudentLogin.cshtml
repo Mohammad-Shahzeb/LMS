@@ -1,10 +1,115 @@
 ﻿@model LibraryManagementSystem.Models.LoginModel
 
-<h3>Student Login</h3>
+@*<h3>Student Login</h3>
 
 <form asp-action="StudentLogin" method="post">
     Email:<input type="email" class="form-control" asp-for="Email"/>
     Password:<input type="password" class="form-control" asp-for="Password"/>
 
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+</form>*@
+@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+   @* <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">*@
+    <link rel="icon" src="/staticimages/fav.png" />
+    <title>Login | Student</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Custom styles for this template -->
+
+  
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+      
+        body {
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            -ms-flex-align: center;
+            -ms-flex-pack: center;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #ffffff;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+            .form-signin .checkbox {
+                font-weight: 400;
+            }
+
+            .form-signin .form-control {
+                position: relative;
+                box-sizing: border-box;
+                height: auto;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+                .form-signin .form-control:focus {
+                    z-index: 2;
+                }
+
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+    </style>
+
+</head>
+
+
+<body class="text-center">
+    <form class="form-signin" action="StudentLogin" method="post">
+       
+        <img src="~/staticimages/lms_logo.png" width="175" height="auto" />
+        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+     
+        <input type="text" asp-for="Email" class="form-control" placeholder="Email address" required autofocus>
+
+        <input type="password" asp-for="Password" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-md btn-primary btn-block" type="submit">Login</button>
+        <a asp-action="StaffLogin" class="btn btn-primary btn-md">Staff Login</a>
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+</body>
+</html>

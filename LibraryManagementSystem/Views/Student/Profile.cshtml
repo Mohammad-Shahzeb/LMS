@@ -1,0 +1,138 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsStudent
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-12 col-md-4">
+  
+            <div class="row">
+                
+                <div class="col-12">
+                    <div class="card">
+                        <img src="/StudentImages/@Model.ImagePath"  />
+                        <div class="card-body text-center">
+                            <h5 class="card-body">@Model.FirstName</h5>
+                            <div>
+                                Designation
+                            </div>
+                            <div>
+                                Address
+                            </div>
+                            <div>
+                                <a asp-action="EditProfile" class="btn btn-primary btn-sm">Edit Profile</a>
+                                @*<button type="submit" class="btn btn-info btn-sm">Message</button>*@
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="card text-end" >
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">Website</div>
+                                <div class="col-8">__website</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-4">Github</div>
+                                <div class="col-8">__github</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-4">Twitter</div>
+                                <div class="col-8">__twitter</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-4">Facebook</div>
+                                <div class="col-8">__facebook</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-4">Instagram</div>
+                                <div class="col-8">__instagram</div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-12 col-md-8">
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+
+                        <div class="card-body">
+
+
+                            <div class="row">
+                                <div class="col-3">First Name</div>
+                                <div class="col-9">@Model.FirstName</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-3">Last Name</div>
+                                <div class="col-9">@Model.LastName</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-3">Email</div>
+                                <div class="col-9">@Model.Email</div>
+                            </div>
+                            <hr />
+                             <div class="row">
+                                <div class="col-3">RollNo</div>
+                                <div class="col-9">@Model.RollNo</div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-3">Batch</div>
+                                <div class="col-9">@Model.Batch</div>
+                            </div>
+                            <hr />
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6  mt-3">
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a asp-action="AvailbleInventory" class="btn btn-primary">Availble Inventory</a>
+                            <a asp-action="MyRequests" class="btn btn-primary">My Requests</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6 col-md-6  mt-3">
+                    <div class="card">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a asp-action="IssuedInventory" class="btn btn-primary">Issued Inventory</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+  
+
+</div>
+@*<Com name="_IssuedInventory" />*@
+
+

@@ -18,9 +18,6 @@ namespace LibraryManagementSystem.Controllers
         public IActionResult Index()
         {
 
-
-         
-
             HttpContext.Session.SetString("MyKey", "shaab");
             var list = _context.LmsInventoryHistories.Include(a=> a.Staff).Include(a=> a.Student).Include(a=> a.Inventory)
                 .ToList();

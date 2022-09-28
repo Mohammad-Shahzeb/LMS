@@ -8,6 +8,7 @@ namespace LibraryManagementSystem.EF_Models
         public LmsStudent()
         {
             LmsInventoryHistories = new HashSet<LmsInventoryHistory>();
+            LmsInventoryRequests = new HashSet<LmsInventoryRequest>();
         }
 
         public int Id { get; set; }
@@ -15,6 +16,7 @@ namespace LibraryManagementSystem.EF_Models
         public string LastName { get; set; } = null!;
         public string RollNo { get; set; } = null!;
         public string Batch { get; set; } = null!;
+        public decimal DueFine { get; set; }
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
         public DateTime CreatedDate { get; set; }
@@ -22,5 +24,6 @@ namespace LibraryManagementSystem.EF_Models
         public string? ImageBase64 { get; set; }
 
         public virtual ICollection<LmsInventoryHistory> LmsInventoryHistories { get; set; }
+        public virtual ICollection<LmsInventoryRequest> LmsInventoryRequests { get; set; }
     }
 }

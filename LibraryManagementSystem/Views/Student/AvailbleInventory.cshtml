@@ -1,0 +1,40 @@
+﻿@model List<LibraryManagementSystem.Models.AvailableInventoryItem>
+
+<h3>Availble Inventory</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Book Title</td>
+            <td>Book Author</td>
+            <td>Book Code</td>
+            <td>Book Genre</td>
+            <td>Issue Book</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookTitle</td>
+                <td>@item.BookAuthor</td>
+                <td>@item.BookCode</td>
+                <td>@item.BookGenre</td>
+
+                <td>
+                    @if (item.alreadyRequested)
+                    {
+
+                    }
+                    else
+                    {
+                        <a asp-action="RequestInventory" asp-route-inventoryid="@item.Id" class="btn btn-info btn-sm">Request Book</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+<a asp-action="Profile" class="btn btn-primary">Cancel</a>

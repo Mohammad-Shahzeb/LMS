@@ -8,5 +8,6 @@ namespace LibraryManagementSystem.EF_Models
         public int Id { get; set; }
         public int IssuedPeriod { get; set; }
         public decimal FinePerDay { get; set; }
+        public int FinePeriod { get; set; }
     }
 }

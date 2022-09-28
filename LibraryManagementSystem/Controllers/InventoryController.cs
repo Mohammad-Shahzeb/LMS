@@ -2,6 +2,8 @@
 using LibraryManagementSystem.Filters;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace LibraryManagementSystem.Controllers
@@ -14,7 +16,8 @@ namespace LibraryManagementSystem.Controllers
 
         public IActionResult Index()
         {
-            var inventory = _Context.LmsInventories.OrderByDescending(a=> a.CreatedDate).ToList();
+            
+            var inventory = _Context.LmsInventories.Include(a=> a.BookCodeNavigation).OrderByDescending(a=> a.CreatedDate).ToList();
             return View(inventory);
         }
         [HttpPost]
@@ -27,7 +30,7 @@ namespace LibraryManagementSystem.Controllers
                 query = query.Where(a=> a.BookTitle == searchModel.BookTitle);  
             }
 
-            if (!string.IsNullOrEmpty(searchModel.BookCode))
+            if (searchModel.BookCode is not null)
             {
                 query = query.Where(a => a.BookCode == searchModel.BookCode);
             }
@@ -57,7 +60,9 @@ namespace LibraryManagementSystem.Controllers
         [HttpGet]
         public IActionResult Create_Inventory()
         {
-            return View();
+            ViewData["BookCode"] = _Context.LmsInventoryCodes.Select(a =>
+                             new SelectListItem { Value = a.Id.ToString(), Text = a.Code }).ToList();
+            return View(new LmsInventory());
         }
 
         public string SaveFileToFolder(IFormFile file, string filepath)
@@ -100,6 +105,7 @@ namespace LibraryManagementSystem.Controllers
             try
             {
                 inventory.CreatedDate = DateTime.Now;
+                inventory.IsIssued = false;
                 _Context.Add(inventory);
                 _Context.SaveChanges();
             }
@@ -126,6 +132,8 @@ namespace LibraryManagementSystem.Controllers
         [HttpGet]
         public IActionResult Edit(int lm)
         {
+            ViewData["BookCode"] = _Context.LmsInventoryCodes.Select(a =>
+                             new SelectListItem { Value = a.Id.ToString(), Text = a.Code }).ToList();
             var Edit = _Context.LmsInventories.FirstOrDefault(a=> a.Id == lm);
 
             if(Edit is not null)
@@ -134,10 +142,42 @@ namespace LibraryManagementSystem.Controllers
             }
             return View();
         }
+        public string UpdateFileToFolder(IFormFile file, string filepath)
+        {
+            using (Stream filestream = new FileStream(filepath, FileMode.Create))
+            {
+                file.CopyToAsync(filestream);
+            }
+            return string.Empty;
+        }
 
         [HttpPost]
         public IActionResult Edit(LmsInventory lm)
         {
+            string path = "wwwroot/InventoryImages";
+
+            var files = Request.Form.Files;
+
+            if (files.Count > 0)
+            {
+                var file = files["ImagePath"];
+
+                if (file.Length > 0)
+                {
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    lm.ImagePath = DateTime.Now.Ticks.ToString() + file.FileName;
+                    path = Path.Combine(path, lm.ImagePath);
+
+                    using (Stream filestream = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyTo(filestream);
+                    }
+                }
+            }
+            lm.IsIssued = false;
             _Context.Update(lm);
             _Context.SaveChanges();
             return RedirectToAction("Index");

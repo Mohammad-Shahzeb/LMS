@@ -1,0 +1,65 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsInventoryRequest>
+
+<h3>List of Inventory Requests</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Inventory Id</td>
+            <td>Student Id</td>
+            <td>Requested Date</td>
+            <td>Status</td>
+            <td>Staff Id</td>
+            <td>Modified Date</td>
+            <td>Action</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Inventory.BookTitle</td>
+                <td>@item.Student.FirstName</td>
+                <td>@item.RequestDate</td>
+                <td>
+                    @if (item.Status == 1)
+                    {
+                        <span>
+                            Pending
+                        </span>
+                   
+                    }
+                    else if (item.Status == 2)
+                    {
+                        <span>
+                            Approved
+                        </span>
+                   
+                    }
+                    else if (item.Status == 3)
+                    {
+                        <span>
+                            Declined
+                        </span>
+                     
+
+                    }
+                </td>
+                <td>@item.Staff?.FirstName</td>
+                <td>@item.ModifiedDate</td>
+                <td>
+                    @if (item.Status == 1) /// In case of pending 
+                    {
+                        <a asp-action="updateRequest" asp-route-requestId="@item.Id" asp-route-ActionId="2" class="btn btn-primary btn-sm">Approve</a>
+                        <a asp-action="updateRequest" asp-route-requestId="@item.Id" asp-route-ActionId="3" class="btn btn-danger btn-sm">Decline</a>
+
+                    }
+                 
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-primary">Cancel</a>

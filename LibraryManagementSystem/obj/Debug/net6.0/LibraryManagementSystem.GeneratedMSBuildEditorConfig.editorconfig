@@ -43,6 +43,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/development/LMS/LibraryManagementSystem/Views/InventoryCode/CreateInventoryCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5Q29kZVxDcmVhdGVJbnZlbnRvcnlDb2RlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/InventoryCode/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5Q29kZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/InventoryCode/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5Q29kZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/development/LMS/LibraryManagementSystem/Views/InventoryHistory/Create_InventoryHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5SGlzdG9yeVxDcmVhdGVfSW52ZW50b3J5SGlzdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +65,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/development/LMS/LibraryManagementSystem/Views/InventoryHistory/InventoryTimeline.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5SGlzdG9yeVxJbnZlbnRvcnlUaW1lbGluZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/InventoryRequest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5UmVxdWVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/development/LMS/LibraryManagementSystem/Views/Inventory/Create_Inventory.cshtml]
@@ -95,6 +111,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/development/LMS/LibraryManagementSystem/Views/Staff/allRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcYWxsUmVxdWVzdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/development/LMS/LibraryManagementSystem/Views/Staff/Create_staff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcQ3JlYXRlX3N0YWZmLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -107,6 +127,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/development/LMS/LibraryManagementSystem/Views/Student/AvailbleInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxBdmFpbGJsZUludmVudG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/development/LMS/LibraryManagementSystem/Views/Student/Create_Student.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxDcmVhdGVfU3R1ZGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -115,8 +139,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/development/LMS/LibraryManagementSystem/Views/Student/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/development/LMS/LibraryManagementSystem/Views/Student/Get_Student_list.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxHZXRfU3R1ZGVudF9saXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Student/IssuedInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJc3N1ZWRJbnZlbnRvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Student/MyRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxNeVJlcXVlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Student/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Student/_IssuedInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxfSXNzdWVkSW52ZW50b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/development/LMS/LibraryManagementSystem/Views/_ViewImports.cshtml]

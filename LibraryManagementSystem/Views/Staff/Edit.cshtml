@@ -1,19 +1,54 @@
 ﻿@model LibraryManagementSystem.EF_Models.LmsStaff
 
-<h3>Create Staff</h3>
+<h3>Edit Staff</h3>
+<div>
+    <form asp-controller="Staff" asp-action="Edit" enctype="multipart/form-data">
 
-<form asp-controller="Staff" asp-action="Edit">
-    <input type="hidden" asp-for="Id" /><br />
-    <input type="hidden" asp-for="CreatedDate" /><br />
-    <label>First Name:</label><br />
-    <input type="text" asp-for="FirstName" /><br />
-    <label>last Name:</label><br />
-    <input type="text" asp-for="LastName" /><br />
-    <label> Email:</label><br />
-    <input type="email" asp-for="Email" /><br />
-    <label>Password:</label><br />
-    <input type="text" asp-for="Password" /><br />
+    
+         <input type="hidden" asp-for="Id" /><br />
+         <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="ImagePath" />
+         
+         <div>
+            <label>First Name:</label><br />
+            <input type="text" asp-for="FirstName" class="form-control"/>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+         </div>
+      
+         <div>
+            <label>Last Name:</label><br />
+            <input type="text" asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+         </div>
+        
+         <div>
+            <label> Email:</label><br />
+            <input type="email" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+         </div>
+      
+         <div>
+            <label>Password:</label><br />
+            <input type="text" asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+         </div>
 
-    <button class="btn btn-primary" type="submit" >Submit</button>
-    <button asp-action="Index" class="btn btn-info">Cancel</button>
-</form>
+        <div class="form-group">
+            <label asp-for="ImagePath" class="control-label"></label>
+            <input type="file" asp-for="ImagePath" class="form-control" />
+            <span asp-validation-for="CreatedDate" class="text-danger"></span>
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a asp-action="Index" class="btn btn-info">Cancel</a>
+    </form>
+</div>
+
+
+<div>
+    @section Scripts{
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }
+    </div>

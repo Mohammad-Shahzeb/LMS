@@ -8,6 +8,7 @@ namespace LibraryManagementSystem.EF_Models
         public LmsStaff()
         {
             LmsInventoryHistories = new HashSet<LmsInventoryHistory>();
+            LmsInventoryRequests = new HashSet<LmsInventoryRequest>();
         }
 
         public int Id { get; set; }
@@ -20,5 +21,6 @@ namespace LibraryManagementSystem.EF_Models
         public string? ImageBase64 { get; set; }
 
         public virtual ICollection<LmsInventoryHistory> LmsInventoryHistories { get; set; }
+        public virtual ICollection<LmsInventoryRequest> LmsInventoryRequests { get; set; }
     }
 }

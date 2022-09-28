@@ -1,10 +1,11 @@
-D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.dll
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\appsettings.Development.json
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\appsettings.json
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.staticwebassets.runtime.json
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.exe
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.deps.json
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.runtimeconfig.json
+D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.dll
+D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.pdb
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\Humanizer.dll
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\MessagePack.dll
 D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\MessagePack.Annotations.dll
@@ -257,5 +258,4 @@ D:\development\LMS\LibraryManagementSystem\obj\Debug\net6.0\LibraryManagementSys
 D:\development\LMS\LibraryManagementSystem\obj\Debug\net6.0\refint\LibraryManagementSystem.dll
 D:\development\LMS\LibraryManagementSystem\obj\Debug\net6.0\LibraryManagementSystem.pdb
 D:\development\LMS\LibraryManagementSystem\obj\Debug\net6.0\LibraryManagementSystem.genruntimeconfig.cache
-D:\development\LMS\LibraryManagementSystem\bin\Debug\net6.0\LibraryManagementSystem.pdb
 D:\development\LMS\LibraryManagementSystem\obj\Debug\net6.0\ref\LibraryManagementSystem.dll

@@ -10,6 +10,8 @@ namespace LibraryManagementSystem.Controllers
 
         public IActionResult StaffLogin()
         {
+          
+
             return View(new LoginModel());
         }
 
@@ -27,14 +29,30 @@ namespace LibraryManagementSystem.Controllers
             }
             //
             // store date to session here!!!
-            HttpContext.Session.SetInt32("StaffId",result.Id);
+            HttpContext.Session.SetInt32(SessionKeys.StaffId,result.Id);
             // 
             return RedirectToAction("Index","InventoryHistory");
 
         }
+      
+        public IActionResult staffLogout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("StaffLogin");
+        }
 
         public IActionResult StudentLogin()
         {
+
+            if (HttpContext.Session.GetInt32(SessionKeys.StudentId) is not null)
+            {
+
+               
+
+               return RedirectToAction("Profile", "Student");
+            }
+
+
             return View(new LoginModel());
         }
 
@@ -48,9 +66,15 @@ namespace LibraryManagementSystem.Controllers
                 return View(model);
             }
 
-            HttpContext.Session.SetInt32("StudentID", result.Id);
+            HttpContext.Session.SetInt32(SessionKeys.StudentId, result.Id);
 
-            return RedirectToAction("Index","InventoryHistory");
+            return RedirectToAction("Profile", "Student");
+        }
+
+        public IActionResult StudentLogout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("StudentLogin");
         }
     }
 }

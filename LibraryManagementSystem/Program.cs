@@ -13,6 +13,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 
 var app = builder.Build();
@@ -36,6 +38,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Inventory}/{action=Index}/{id?}");
+    pattern: "{controller=Student}/{action=Profile}/{id?}");
 
 app.Run();
