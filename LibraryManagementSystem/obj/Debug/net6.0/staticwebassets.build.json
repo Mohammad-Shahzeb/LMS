@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "M0W3fVHCsNQp2GYyQuf2Cmqb1fqC02dytDf5GcVRwlk=",
+  "Hash": "2FeEKuS8niPfbiKNv88khtW8uj7nY+ilChA99fyexxI=",
   "Source": "LibraryManagementSystem",
   "BasePath": "_content/LibraryManagementSystem",
   "Mode": "Default",
@@ -287,6 +287,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\InventoryImages\\637998140656543123images (3).jpg"
+    },
+    {
+      "Identity": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\InventoryImages\\637999792466078998download (1).jpg",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "InventoryImages/637999792466078998download (1).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\InventoryImages\\637999792466078998download (1).jpg"
+    },
+    {
+      "Identity": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\InventoryImages\\637999805293637854images (2).png",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "InventoryImages/637999805293637854images (2).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\InventoryImages\\637999805293637854images (2).png"
     },
     {
       "Identity": "D:\\development\\LMS\\LibraryManagementSystem\\wwwroot\\js\\site.js",
