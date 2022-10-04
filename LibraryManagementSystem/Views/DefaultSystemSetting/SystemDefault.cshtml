@@ -4,9 +4,11 @@
 
 <form asp-action="SystemDefault">
     <label>Issued Period:</label><br />
-    <input type="number" asp-for="IssuedPeriod"/><br />
+    <input type="number" asp-for="IssuedPeriod" class="form-control"/><br />
+    @*<label>Fine Period:</label><br />
+    <input type="text" asp-for="FinePeriod" class="form-control" /><br />*@
     <label>Fine Per Day:</label><br />
-    <input type="text" asp-for="FinePerDay"/><br />
+    <input type="text" asp-for="FinePerDay" class="form-control" /><br />
     <div class="mt-3">
     <button type="submit" class="btn btn-primary " >Submit</button>
     <a asp-action="Index" class="btn btn-info" style="margin-left: 10px;">Cancel</a>

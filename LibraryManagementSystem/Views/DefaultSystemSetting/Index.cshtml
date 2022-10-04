@@ -1,10 +1,14 @@
 ﻿@model List<LibraryManagementSystem.EF_Models.LmsDefaultSystemSetting>
-<h3>System Default</h3>
+
+@*@await Component.InvokeAsync("Navbar")*@
+
+<h3>Fine Calculations</h3>
     <a asp-action="SystemDefault" class="btn btn-info">Default Page</a>
 <table class="table">
     <thead>
         <tr>
             <td>Issued Period</td>
+           @* <td>Fine Period</td>*@
             <td>Fine Per Day</td>
             <td>Actions</td>
         </tr>
@@ -13,7 +17,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.IssuedPeriod</td>
+                <td>@item.IssuedPeriod</td>        
+                @*<td>@item.FinePeriod</td>*@
                 <td>@item.FinePerDay</td>
                 <td><a asp-action="Edit" asp-route-ss="@item.Id" onclick="return confirm('Are you sure to edit this:@item.Id')">
                     <i class="fa fa-pencil"></i>

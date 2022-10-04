@@ -9,7 +9,8 @@
             <td>Book Author</td>
             <td>Book Code</td>
             <td>Book Genre</td>
-            <td>Created Date</td>
+
+            <td>Action</td>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +21,12 @@
                 <td>@item.BookAuthor</td>
                 <td>@item.BookCode</td>
                 <td>@item.BookGenre</td>
-                <td>@item.CreatedDate</td>
+          
+                <td>
+                    <a asp-action="ReturnInventory" asp-route-Id="@item.Id">
+                        Return
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

@@ -35,7 +35,7 @@ namespace LibraryManagementSystem.Controllers
 
         }
       
-        public IActionResult staffLogout()
+        public IActionResult staffLogout()  
         {
             HttpContext.Session.Clear();
             return RedirectToAction("StaffLogin");

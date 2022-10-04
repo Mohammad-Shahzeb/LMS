@@ -83,6 +83,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/development/LMS/LibraryManagementSystem/Views/Inventory/InventoryCodeDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEludmVudG9yeUNvZGVEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/development/LMS/LibraryManagementSystem/Views/Lms_Students/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG1zX1N0dWRlbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -105,6 +109,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/development/LMS/LibraryManagementSystem/Views/Shared/Components/IssuedInventory/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSXNzdWVkSW52ZW50b3J5XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Shared/Components/Navbar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmF2YmFyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/development/LMS/LibraryManagementSystem/Views/Shared/Error.cshtml]

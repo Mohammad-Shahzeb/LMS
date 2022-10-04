@@ -41,7 +41,7 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="DefaultSystemSetting" asp-action="Index">Default Page</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="DefaultSystemSetting" asp-action="Index">Fine Calculation</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Get_Student_List">Student List</a>
@@ -58,9 +58,6 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="InventoryHistory" asp-action="Index">InventoryHistory</a>
                             </li>
-
-
-
                         </ul>
                     </div>
 
@@ -74,10 +71,6 @@
 
                         </ul>
                     </div>
-
-
-
-
                 }
 
                 @if (HttpContextAccessor.HttpContext.Session.GetInt32(SessionKeys.StudentId) != null)
@@ -92,14 +85,11 @@
 
                         </ul>
                     </div>
-
                 }
-
-
-
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

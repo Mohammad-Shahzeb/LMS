@@ -1,0 +1,115 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsInventory>
+
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+@if (TempData != null)
+{
+        
+    <span>@TempData["key"]</span>
+}
+
+<form asp-action="InventoryCodeDetail">
+    <div class="row">
+        <div class="col-3">
+            Book Title:<input type="text" class="form-control" name="BookTitle" />
+        </div>
+
+        <div class="col-3">
+            Book Code:<input type="text" class="form-control" name="BookCode" />
+        </div>
+
+        <div class="col-3">
+            Is Issued:
+            <select name="IsIssued" class="form-control">
+                <option value="">--select--</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+
+        </div>
+
+        <div class="col-3">
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            <a asp-action="Index" class="btn btn-danger btn-sm">Reset</a>
+        </div>
+
+        <div class="col-3">
+            From Date:<input type="date" class="form-control" name="FromDate" />
+        </div>
+
+        <div class="col-3">
+            To Date:<input type="date" class="form-control" name="ToDate" />
+        </div>
+
+        <div></div>
+    </div>
+</form>
+
+
+
+
+<h3>Inventory Code Details</h3>
+<table class="table">
+    <theah>
+        <tr>
+            <td>Book Image</td>
+            <td>Book Title</td>
+            <td>Book Author</td>
+            <td>Book Version</td>
+
+            <td>Book Genre</td>
+            <td>Is Issued</td>
+            @*<td>Count</td>*@
+            <td>Date</td>
+            @*<td>Actions</td>*@
+            <td>Details</td>
+        </tr>
+    </theah>
+    <tbody>
+        @foreach (var item in Model)
+        {
+         
+
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+
+                        <img src="/InventoryImages/@item.ImagePath" style="width:40px" height="40px" />
+
+                    }
+
+                </td>
+                <td>@item.BookTitle</td>
+                <td>@item.BookAuthor</td>
+                <td>@item.BookVersion</td>
+
+                <td>@item.BookGenre</td>
+                <td>@item.IsIssued</td>
+         
+                <td>@item.CreatedDate</td>
+                 <td>
+            <a asp-action="Delete" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to delete this inventory:@item.BookCode')">
+            <i class="fa fa-times"></i>
+            </a>
+
+            <a asp-action="Edit" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to edit this inventory:@item.BookCode')">
+            <i class="fa fa-pencil"></i>
+            </a>
+
+            <a asp-action="Copy" asp-route-InventoryId="@item.Id" onclick="return confirm('Are you sure to copy this inventory:@item.Id')">
+            <i class="fa fa-copy"></i>
+            </a>
+            </td>
+            
+
+
+            </tr>
+        }
+        <a asp-action="Create_Inventory" class="btn btn-info">Add Inventory</a>
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-primary">Inventory List</a>

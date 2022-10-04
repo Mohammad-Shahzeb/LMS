@@ -16,12 +16,12 @@ namespace LibraryManagementSystem.Controllers
 
         public IActionResult Index()
         {
-            
-            var inventory = _Context.LmsInventories.Include(a=> a.BookCodeNavigation).OrderByDescending(a=> a.CreatedDate).ToList();
+
+            IEnumerable<IGrouping<int,LmsInventory>> inventory = _Context.LmsInventories.ToList().GroupBy(a => a.BookCode);
             return View(inventory);
         }
         [HttpPost]
-        public IActionResult Index(InventorySearchModel searchModel)
+        public IActionResult InventoryCodeDetail(InventorySearchModel searchModel)
         {
             IQueryable<LmsInventory> query = _Context.LmsInventories;
 
@@ -182,5 +182,46 @@ namespace LibraryManagementSystem.Controllers
             _Context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Copy(int InventoryId)
+        {
+
+            var inventory = _Context.LmsInventories.Find(InventoryId);
+
+            if (inventory is not null)
+            {
+                try
+                {
+                    _Context.LmsInventories.Add(new LmsInventory
+                    {
+                        BookAuthor = inventory.BookAuthor,
+                        BookCode = inventory.BookCode,
+                        BookTitle = inventory.BookTitle,
+                        BookGenre = inventory.BookGenre,
+                        BookVersion = inventory.BookVersion,
+                        ImagePath = inventory.ImagePath,
+                        IsIssued = false,
+                        CreatedDate = DateTime.Now
+                    });
+
+                    _Context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                    TempData["key"] = $"There was an error Copying this Inventory{InventoryId}{ex.Message}";
+                    
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult InventoryCodeDetail(int Code)
+        {
+            var list = _Context.LmsInventories.Where(a => a.BookCode == Code);
+            return View(list.ToList());
+        }
+
     }
 }

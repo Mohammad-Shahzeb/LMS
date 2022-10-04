@@ -5,6 +5,7 @@ using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Eventing.Reader;
 //using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Controllers
@@ -233,7 +234,7 @@ namespace LibraryManagementSystem.Controllers
             }
             return View();
         }
-         
+
 
         [HttpGet]
         public IActionResult EditProfile()
@@ -307,7 +308,7 @@ namespace LibraryManagementSystem.Controllers
                     student.ImagePath = edit.ImagePath;
 
                     _context.SaveChanges();
-                   
+
                 }
             }
             catch (Exception ex)
@@ -343,7 +344,7 @@ namespace LibraryManagementSystem.Controllers
                     ImageBase64 = a.ImageBase64,
                     ImagePath = a.ImagePath,
                     IsIssued = a.IsIssued,
-                    alreadyRequested = _context.LmsInventoryRequests.Any(p => p.InventoryId == a.Id && p.StudentId == StudentId && p.Status != 3), /// 
+                    alreadyRequested = _context.LmsInventoryRequests.Any(p => p.InventoryId == a.Id && p.StudentId == StudentId && (p.Status < 3)), /// 
                 });
 
 
@@ -432,6 +433,74 @@ namespace LibraryManagementSystem.Controllers
             }
 
             return View(list);
+        }
+
+
+        public IActionResult ReturnInventory(int Id)
+        {
+
+            var StudentId = HttpContext.Session.GetInt32(SessionKeys.StudentId);
+
+            var system_Settings = _context.LmsDefaultSystemSettings.Find(1);
+
+        
+            //// request Completed
+
+            try
+            {
+                decimal fineCalculted = 0;
+
+
+                /// 
+                var book = _context.LmsInventories.FirstOrDefault(a => a.Id == Id);
+                var EntryWhereBookwasissued = _context.LmsInventoryHistories.
+                    OrderByDescending(a => a.CreatedDate).
+                    FirstOrDefault(a => a.EntryType == "1" &&
+                    a.InventoryId == book.Id);
+
+
+                var timetoToday_bookwasIssued = DateTime.Now - EntryWhereBookwasissued.CreatedDate;
+
+                if(timetoToday_bookwasIssued.Days > system_Settings.IssuedPeriod)
+                {
+                    var daysOfLateReturn = timetoToday_bookwasIssued.Days - system_Settings.IssuedPeriod;
+
+                    fineCalculted = daysOfLateReturn * system_Settings.FinePerDay;
+
+                }
+
+
+
+                var request = _context.LmsInventoryRequests.FirstOrDefault(a => a.Status == 2 && a.InventoryId == Id && a.StudentId == StudentId);
+
+                request.Status = 4; /// 4 in case of completed the life cycle of request.
+
+              
+
+                book.IsIssued = false;
+           
+
+                _context.LmsInventoryHistories.Add(new LmsInventoryHistory
+                {
+
+                    CreatedDate = DateTime.Now,
+                    EntryType = "2",
+                    FineCollected = (int)fineCalculted, // ????
+                    InventoryId = book.Id,
+                    StaffId = 1018,
+                    StudentId = StudentId ?? 0
+
+                });
+
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+              
+            }
+
+            return RedirectToAction("IssuedInventory");
         }
 
     }
