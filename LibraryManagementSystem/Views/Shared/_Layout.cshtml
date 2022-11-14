@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="~/LibraryManagementSystem.styles.css" asp-append-version="true" />
 
     <style>
-        .btn-info:hover {
+        .btn-info:hover {   
             color: #000;
             background-color: lightsteelblue !important;
             border-color: black;
@@ -41,13 +41,19 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="DefaultSystemSetting" asp-action="Index">Fine Calculation</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="DefaultSystemSetting" asp-action="Index">DefaultSystemSettings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Get_Student_List">Student List</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="FineCalculation" asp-action="Index">Fine Calculation</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Staff" asp-action="Index">Staff List</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Get_Student_List">StudentList</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Staff" asp-action="Index">StaffList</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="Index">BookGenre</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="Index">Inventory</a>

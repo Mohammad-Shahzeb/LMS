@@ -3,6 +3,7 @@ using LibraryManagementSystem.Filters;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 
@@ -15,8 +16,8 @@ namespace LibraryManagementSystem.Controllers
         [StaffUserAuth]
         public IActionResult Index()
         {
-            var list = _context.LmsStaffs.OrderByDescending(a => a.CreatedDate).ToList();
-            return View(list);
+            var list = _context.LmsStaffs.OrderByDescending(a => a.CreatedDate);
+            return View(list.ToList());
         }
 
         [HttpPost]
@@ -54,6 +55,7 @@ namespace LibraryManagementSystem.Controllers
             var list = query.OrderByDescending(a => a.CreatedDate).ToList();
             return View(list);
         }
+
         [HttpGet]
         public IActionResult Create_Staff()
         {
@@ -192,15 +194,19 @@ namespace LibraryManagementSystem.Controllers
 
         public IActionResult updateRequest(int requestId, int ActionId)
         {
-
             var StaffId = HttpContext.Session.GetInt32(SessionKeys.StaffId);
+
             var request = _context.LmsInventoryRequests.FirstOrDefault(a => a.Id == requestId);
+
+
+
+
 
             if (ActionId == 2)
             {
                 try
                 {
-                    request.Status = 2;
+                    request.RequestStatusId = 2;
                     request.StaffId = StaffId;
                     request.ModifiedDate = DateTime.Now;
 
@@ -216,8 +222,8 @@ namespace LibraryManagementSystem.Controllers
                         {
 
                             CreatedDate = DateTime.Now,
-                            EntryType = "1", // 1 for issue
-                            FineCollected = 0,
+                            EntryTypeId = 1, // 1 for issue
+
                             InventoryId = inventory.Id,
                             StudentId = request.StudentId,
                             StaffId = StaffId ?? 0,
@@ -228,6 +234,30 @@ namespace LibraryManagementSystem.Controllers
 
 
                     _context.SaveChanges();
+
+
+                    if (request is not null)
+                    {
+                        var all_remainingRequest_against_same_inventory = _context.LmsInventoryRequests.
+                                                                                                                    Where(a => a.Id != requestId && a.InventoryId == request.InventoryId).AsQueryable();
+
+
+
+                        foreach (var item in all_remainingRequest_against_same_inventory)
+                        {
+                            item.RequestStatusId = 3;
+                            item.ModifiedDate = DateTime.Now;
+                            item.StaffId = StaffId;
+                        }
+
+
+                        
+
+                        _context.SaveChanges();
+                    }
+
+
+
                 }
                 catch (Exception ex)
                 {
@@ -238,7 +268,7 @@ namespace LibraryManagementSystem.Controllers
             }
             else if (ActionId == 3)
             {
-                request.Status = 3;
+                request.RequestStatusId = 3;
                 request.StaffId = StaffId;
                 request.ModifiedDate = DateTime.Now;
 
@@ -249,6 +279,30 @@ namespace LibraryManagementSystem.Controllers
 
             return RedirectToAction("allRequests");
         }
+
+        //public IActionResult CancelRequests(int requestId, int ActionId)
+        //{
+        //    var StaffId = HttpContext.Session.GetInt32(SessionKeys.StaffId);
+
+        //    var request = _context.LmsInventoryRequests.FirstOrDefault(a => a.Id == requestId);
+
+        //    if (ActionId == 1)
+        //    {
+        //        try
+        //        {
+        //            request.Status = 3;
+        //            request.StaffId = StaffId;
+        //            request.ModifiedDate = DateTime.Now;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //        }
+
+
+        //    }
+
+        //    return View();
+        //}
 
     }
 }

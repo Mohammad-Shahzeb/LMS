@@ -17,11 +17,6 @@ namespace LibraryManagementSystem.Controllers
             return View(list);
         }
 
-        //[HttpPost]
-        //public IActionResult Index(CodeSearchModel model)
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
         public IActionResult CreateInventoryCode()
@@ -79,9 +74,16 @@ namespace LibraryManagementSystem.Controllers
         }
 
 
-        public bool IsValidCode(string Code)
+        public bool IsValidCode(string Code , int Id)
         {
-            return !_context.LmsInventoryCodes.Any(a => a.Code == Code);
+            if(Id == 0)
+            {
+                return !_context.LmsInventoryCodes.Any(a => a.Code == Code);
+            }
+            else
+            {
+                return !_context.LmsInventoryCodes.Any(a=>a.Code == Code && a.Id != Id);
+            }
         }
 
     }

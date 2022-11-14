@@ -4,7 +4,7 @@
     {
         public string? BookTitle { get; set; } = null;
 
-        public int? BookCode { get; set; } = null;
+        public string? BookCode { get; set; } = null;
 
         public bool? IsIssued { get; set; } = null;
 

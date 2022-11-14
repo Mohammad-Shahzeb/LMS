@@ -35,6 +35,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdFN5c3RlbVNldHRpbmdcU3lzdGVtRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/development/LMS/LibraryManagementSystem/Views/FineCalculation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluZUNhbGN1bGF0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Genre/CreateGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Genre/EditGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRWRpdEdlbnJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/development/LMS/LibraryManagementSystem/Views/Genre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/development/LMS/LibraryManagementSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

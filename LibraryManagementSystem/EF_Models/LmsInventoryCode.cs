@@ -12,6 +12,7 @@ namespace LibraryManagementSystem.EF_Models
 
         public int Id { get; set; }
         public string? Code { get; set; }
+        public string? CodeDescription { get; set; }
 
         public virtual ICollection<LmsInventory> LmsInventories { get; set; }
     }

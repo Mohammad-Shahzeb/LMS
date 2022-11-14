@@ -1,6 +1,7 @@
 ﻿using LibraryManagementSystem.EF_Models;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace LibraryManagementSystem.ViewComponents
@@ -13,13 +14,13 @@ namespace LibraryManagementSystem.ViewComponents
         {
             var StudentId = HttpContext.Session.GetInt32(SessionKeys.StudentId);
 
-            var IssuedInventoryIds = _context.LmsInventoryRequests.Where(a => a.StudentId == StudentId && a.Status == 2).Select(a => a.InventoryId).ToList();//.Include(a=>a.Inventory)
+            var IssuedInventoryIds = _context.LmsInventoryRequests.Where(a => a.StudentId == StudentId && a.RequestStatusId == 2).Select(a => a.InventoryId).ToList();//.Include(a=>a.Inventory)
 
             List<LmsInventory> list = new List<LmsInventory>();
 
             foreach (var id in IssuedInventoryIds)
             {
-                var book = _context.LmsInventories.Find(id);
+                var book = _context.LmsInventories.Where(a=>a.Id == id).Include(a=>a.BookCodeNavigation).Include(a=>a.BookGenre).FirstOrDefault();
                 if (book is not null)
                 {
                     list.Add(book);

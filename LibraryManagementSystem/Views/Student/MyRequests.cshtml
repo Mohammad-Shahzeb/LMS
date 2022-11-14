@@ -21,21 +21,21 @@
                 <td>@item.Student.FirstName</td>
                 <td>@item.RequestDate</td>
                 <td>
-                    @if (item.Status == 1)
+                    @if (item.RequestStatusId == 1)
                     {
                         <span>
                             Pending
                         </span>
 
                     }
-                    else if (item.Status == 2)
+                    else if (item.RequestStatusId == 2)
                     {
                         <span>
                             Approved
                         </span>
 
                     }
-                    else if (item.Status == 3)
+                    else if (item.RequestStatusId == 3)
                     {
                         <span>
                             Declined
@@ -43,7 +43,7 @@
 
 
                     }
-                    else if(item.Status == 4)
+                    else if (item.RequestStatusId == 4)
                     {
 
                         <span>

@@ -16,13 +16,14 @@ namespace LibraryManagementSystem.EF_Models
         public string BookAuthor { get; set; } = null!;
         public string BookVersion { get; set; } = null!;
         public int BookCode { get; set; }
-        public string BookGenre { get; set; } = null!;
+        public int? BookGenreId { get; set; }
         public bool IsIssued { get; set; }
         public DateTime CreatedDate { get; set; }
         public string? ImagePath { get; set; }
         public string? ImageBase64 { get; set; }
 
         public virtual LmsInventoryCode BookCodeNavigation { get; set; } = null!;
+        public virtual LmsBookGenre? BookGenre { get; set; }
         public virtual ICollection<LmsInventoryHistory> LmsInventoryHistories { get; set; }
         public virtual ICollection<LmsInventoryRequest> LmsInventoryRequests { get; set; }
     }

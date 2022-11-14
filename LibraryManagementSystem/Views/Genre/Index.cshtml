@@ -1,0 +1,43 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsBookGenre>
+
+<style>
+    .mlcustom{
+        margin-left: 15px !important;
+    }
+</style>
+
+<h3>List of Book Genre</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Book Genre</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookGenreId</td>
+                <td>@item.BookGenre</td>
+                <td>
+                    <a asp-action="EditGenre" asp-route-id="@item.BookGenreId" >
+                        <i class="fa fa-pencil"></i>
+                    </a>
+
+                    <a asp-action="DeleteGenre" asp-route-Id="@item.BookGenreId" class="mlcustom">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<a asp-action="CreateGenre" class="btn btn-info">Add Genre</a>
+

@@ -13,5 +13,6 @@
         public string? ImagePath { get; set; }
         public string? ImageBase64 { get; set; }
         public bool alreadyRequested { get; set; } = false;
+        public string? CodeDescription { get; set; }
     }
 }

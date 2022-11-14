@@ -23,21 +23,21 @@
                 <td>@item.Student.FirstName</td>
                 <td>@item.RequestDate</td>
                 <td>
-                    @if (item.Status == 1)
+                    @if (item.RequestStatusId == 1)
                     {
                         <span>
                             Pending
                         </span>
                    
                     }
-                    else if (item.Status == 2)
+                    else if (item.RequestStatusId == 2)
                     {
                         <span>
                             Approved
                         </span>
                    
                     }
-                    else if (item.Status == 3)
+                    else if (item.RequestStatusId == 3)
                     {
                         <span>
                             Declined
@@ -45,7 +45,7 @@
                      
 
                     }
-                    else if (item.Status == 4)
+                    else if (item.RequestStatusId == 4)
                     {
 
                         <span>
@@ -57,7 +57,7 @@
                 <td>@item.Staff?.FirstName</td>
                 <td>@item.ModifiedDate</td>
                 <td>
-                    @if (item.Status == 1) /// In case of pending 
+                    @if (item.RequestStatusId == 1) /// In case of pending
                     {
                         <a asp-action="updateRequest" asp-route-requestId="@item.Id" asp-route-ActionId="2" class="btn btn-primary btn-sm">Approve</a>
                         <a asp-action="updateRequest" asp-route-requestId="@item.Id" asp-route-ActionId="3" class="btn btn-danger btn-sm">Decline</a>

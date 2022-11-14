@@ -23,13 +23,13 @@
                 <td>@item.Staff.FirstName</td>
                 <td>@item.Inventory.BookTitle</td>
                 <td>
-                    @if (item.EntryType == "1")
+                    @if (item.EntryTypeId == 1)
                     {
                         <span>
                             Issued
                         </span>
                     }
-                    else if (item.EntryType == "2")
+                    else if (item.EntryTypeId == 0)
                     {
                         <span>
                             Return
@@ -38,15 +38,15 @@
 
                 </td>
                 <td>
-                    @if (item.EntryType == "1")
+                    @if (item.EntryTypeId == 1)
                     {
                         <span>
                             Not Applicable
                         </span>
                     }
-                    else if (item.EntryType == "2")
+                    else if (item.EntryTypeId == 0)
                     {
-                        <spam>@item.FineCollected</spam>
+                        @*<spam>@item.DueFineId</spam>*@
                     }
 
 

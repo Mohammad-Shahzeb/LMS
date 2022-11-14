@@ -1,5 +1,11 @@
 ﻿@model List<LibraryManagementSystem.EF_Models.LmsInventoryCode>
 
+<style>
+    .mlcustom {
+        margin-left: 15px !important;
+    }
+</style>
+
 @*@await Component.InvokeAsync("Navbar")*@
 <style>
     .btn-info:hover {
@@ -10,10 +16,14 @@
 </style>
 
 <h3>Inventory Code</h3>
+
+<a asp-action="CreateInventoryCode" class="btn btn-info">Create Inventory Code</a>
+
 <table class="table">
     <thead>
         <tr>
-            <td>BookCode</td>
+            <td>Book Code</td>
+            <td>Code Description</td>
             <td>Action</td>
 
         </tr>
@@ -23,11 +33,12 @@
         {
             <tr>
                 <td>@item.Code</td>
+                <td>@item.CodeDescription</td>
                 <td >
                     <a asp-action="Delete" asp-route-Id="@item.Id" onclick="return confirm('Are You Sure you want to delete this BookCode :@item.Id')">
                         <i class="fa fa-times"></i>
                     </a>
-                    <a asp-action="Edit" asp-route-Id="@item.Id" onclick="return confirm('Are you sure to edit this BookCode:@item.Id')">
+                    <a asp-action="Edit" asp-route-Id="@item.Id" class="mlcustom" onclick="return confirm('Are you sure to edit this BookCode:@item.Id')">
                         <i class="fa fa-pencil"></i>
                     </a>
                 </td>
@@ -38,4 +49,4 @@
     </tbody>
 
 </table>
-<a asp-action="CreateInventoryCode" class="btn btn-info">Create Inventory Code</a>
+

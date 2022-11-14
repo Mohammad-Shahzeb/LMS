@@ -21,15 +21,9 @@
 <table class="table">
     <theah>
         <tr>
-            <td>Book Image</td>
-            <td>Book Title</td>
-            <td>Book Author</td>
-            <td>Book Version</td>
-            <td>Book Genre</td>
             <td>Book Code</td>
+            <td>Code Description</td>
             <td>Count</td>
-            
-            @*<td>Actions</td>*@
             <td>Details</td>
         </tr>
     </theah>
@@ -39,35 +33,9 @@
             var item = group.First();
 
             <tr>
-                <td>
-                    @if (!string.IsNullOrEmpty(item.ImagePath))
-                    {
-
-                        <img src="/InventoryImages/@item.ImagePath" style="width:40px" height="40px" />
-
-                    }
-
-                </td>
-                <td>@item.BookTitle</td>
-                <td>@item.BookAuthor</td>
-                <td>@item.BookVersion</td>
-                <td>@item.BookGenre</td>
-                <td>@item.BookCode</td>
+                <td>@item.BookCodeNavigation.Code</td>
+                <td>@item.BookCodeNavigation.CodeDescription</td>
                 <td>@group.Count()</td>
-                
-                @* <td>
-            <a asp-action="Delete" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to delete this inventory:@item.BookCode')">
-            <i class="fa fa-times"></i>
-            </a>
-
-            <a asp-action="Edit" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to edit this inventory:@item.BookCode')">
-            <i class="fa fa-pencil"></i>
-            </a>
-
-            <a asp-action="Copy" asp-route-InventoryId="@item.Id" onclick="return confirm('Are you sure to copy this inventory:@item.Id')">
-            <i class="fa fa-copy"></i>
-            </a>
-            </td>*@
                 <td>
                     <a asp-action="InventoryCodeDetail" asp-route-Code="@item.BookCode">
                         <i class="fa fa-eye"></i>

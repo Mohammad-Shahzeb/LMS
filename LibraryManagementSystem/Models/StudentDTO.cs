@@ -11,8 +11,6 @@ namespace LibraryManagementSystem.EF_Models
 
     }
 
-
-
     public class StudentDTO
     {
    

@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <label>Book Code:</label><br />
+            <label>Code Description:</label><br />
             <select asp-for="BookCode" class="form-control" asp-items="ViewBag.BookCode"></select>
             <span asp-validation-for="BookCode" class="text-danger"></span>
             
@@ -34,8 +34,8 @@
 
         <div>
             <label>Book Genre:</label><br />
-            <input type="text" asp-for="BookGenre" class="form-control" />
-            <span asp-validation-for="BookGenre" class="text-danger"></span>
+            <select asp-for="BookGenreId" class="form-control" asp-items="ViewBag.BookGenre"></select>
+            <span asp-validation-for="BookGenreId" class="text-danger"></span>
         </div>
 
      @*   <div>
@@ -49,8 +49,8 @@
             <input type="file" asp-for="ImagePath" class="form-control" />
             <span asp-validation-for="CreatedDate" class="text-danger"></span>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
-        <a asp-action="Index" class="btn btn-info">Cancel</a>
+        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        <a asp-action="Index" class="btn btn-info mt-2">Cancel</a>
 
     </form>
 </div>

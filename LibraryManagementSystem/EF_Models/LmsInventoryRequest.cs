@@ -9,11 +9,12 @@ namespace LibraryManagementSystem.EF_Models
         public int StudentId { get; set; }
         public int InventoryId { get; set; }
         public DateTime RequestDate { get; set; }
-        public int Status { get; set; }
+        public int? RequestStatusId { get; set; }
         public int? StaffId { get; set; }
         public DateTime? ModifiedDate { get; set; }
 
         public virtual LmsInventory Inventory { get; set; } = null!;
+        public virtual LmsInventoryRequestStatus? RequestStatus { get; set; }
         public virtual LmsStaff? Staff { get; set; }
         public virtual LmsStudent Student { get; set; } = null!;
     }

@@ -7,7 +7,7 @@
 </style>
 @if (TempData != null)
 {
-        
+
     <span>@TempData["key"]</span>
 }
 
@@ -31,8 +31,10 @@
 
         </div>
 
-        <div class="col-3">
+        <div class="col-3 d-flex justify-content-evenly align-items-end  ">
             <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            
+
             <a asp-action="Index" class="btn btn-danger btn-sm">Reset</a>
         </div>
 
@@ -59,19 +61,16 @@
             <td>Book Title</td>
             <td>Book Author</td>
             <td>Book Version</td>
-
             <td>Book Genre</td>
             <td>Is Issued</td>
-            @*<td>Count</td>*@
             <td>Date</td>
-            @*<td>Actions</td>*@
             <td>Details</td>
         </tr>
     </theah>
     <tbody>
         @foreach (var item in Model)
         {
-         
+
 
             <tr>
                 <td>
@@ -86,25 +85,24 @@
                 <td>@item.BookTitle</td>
                 <td>@item.BookAuthor</td>
                 <td>@item.BookVersion</td>
-
-                <td>@item.BookGenre</td>
+                <td>@item.BookGenre?.BookGenre</td>
                 <td>@item.IsIssued</td>
-         
+
                 <td>@item.CreatedDate</td>
-                 <td>
-            <a asp-action="Delete" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to delete this inventory:@item.BookCode')">
-            <i class="fa fa-times"></i>
-            </a>
+                <td>
+                    <a asp-action="Delete" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to delete this inventory:@item.BookCode')">
+                        <i class="fa fa-times"></i>
+                    </a>
 
-            <a asp-action="Edit" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to edit this inventory:@item.BookCode')">
-            <i class="fa fa-pencil"></i>
-            </a>
+                    <a asp-action="Edit" asp-route-lm="@item.Id" onclick="return confirm('Are you sure to edit this inventory:@item.BookCode')">
+                        <i class="fa fa-pencil"></i>
+                    </a>
 
-            <a asp-action="Copy" asp-route-InventoryId="@item.Id" onclick="return confirm('Are you sure to copy this inventory:@item.Id')">
-            <i class="fa fa-copy"></i>
-            </a>
-            </td>
-            
+                    <a asp-action="Copy" asp-route-InventoryId="@item.Id" onclick="return confirm('Are you sure to copy this inventory:@item.Id')">
+                        <i class="fa fa-copy"></i>
+                    </a>
+                </td>
+
 
 
             </tr>

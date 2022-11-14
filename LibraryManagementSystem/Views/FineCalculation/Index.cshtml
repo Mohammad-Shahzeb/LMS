@@ -1,0 +1,26 @@
+﻿@model List<LibraryManagementSystem.EF_Models.LmsFineCalculation>
+
+<h3>Fine Imposed</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Student Name</td>
+            <td>Inventory title</td>
+            <td>Due Fine</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>@item.DueFineId</td>
+                <td>@item.InventoryRequestHistory.Student.FirstName</td>
+                <td>@item.InventoryRequestHistory.Inventory.BookTitle</td>
+                <td>@item.DueFine</td>
+            }
+        </tr>
+    </tbody>
+</table>

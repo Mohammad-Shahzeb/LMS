@@ -1,0 +1,26 @@
+﻿@model LibraryManagementSystem.EF_Models.LmsBookGenre
+<style>
+    .mlcustom{
+        margin-left: 5px !important;
+    }
+</style>
+
+<h3>Create Book Genre</h3>
+
+<form method="post" asp-action="CreateGenre" >
+    <div>
+        <label>Book Genre:</label> <br />
+        <input type="text" asp-for="BookGenre" class="form-control"/>
+        <span asp-validation-for="BookGenre" class="text-danger"></span>
+    </div>
+  
+    <button type="submit" asp-action="CreateGenre" class="btn btn-primary mt-2 ">Submit </button>
+    <a asp-action="Index" class="btn btn-info mt-2 mlcustom">Cancel</a>
+
+</form>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+ 

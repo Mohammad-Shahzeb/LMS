@@ -19,7 +19,10 @@ namespace LibraryManagementSystem.EF_Models
         [Required]
         //[MaxLength(5,ErrorMessage = "Code can be 5 length")]
         [StringLength(5, ErrorMessage = "Code can be 5 lengthsssssssss")]
-        [Remote("IsValidCode", "InventoryCode",ErrorMessage =("Code Must be Unique"))]
+        [Remote("IsValidCode", "InventoryCode",ErrorMessage =("Code Must be Unique"),AdditionalFields ="Id")]
         public string? Code { get; set; }
+
+        [Required]
+        public string? CodeDescription { get; set; }
     }
 }

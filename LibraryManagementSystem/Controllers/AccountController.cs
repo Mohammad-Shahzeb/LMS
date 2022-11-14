@@ -1,6 +1,7 @@
 ﻿using LibraryManagementSystem.EF_Models;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.Controllers
 {
@@ -60,6 +61,8 @@ namespace LibraryManagementSystem.Controllers
         public IActionResult StudentLogin(LoginModel model)
         {
             var result = _context.LmsStudents.FirstOrDefault(a => a.Email == model.Email && a.Password == model.Password);
+
+            //var eee = _context.Database.ExecuteSqlRaw($"exec GetStudentIdByEmailPass_SP", [model.Email, model.Password]);
 
             if (result is null)
             {

@@ -12,27 +12,28 @@ namespace LibraryManagementSystem.Controllers
     public class InventoryController : Controller
     {
         private readonly LMS_Context _Context = new LMS_Context();
-        private string? inventory;
+        //private string? inventory;
 
         public IActionResult Index()
         {
 
-            IEnumerable<IGrouping<int,LmsInventory>> inventory = _Context.LmsInventories.ToList().GroupBy(a => a.BookCode);
+            IEnumerable<IGrouping<int, LmsInventory>> inventory = _Context.LmsInventories.Include(a => a.BookGenre).Include(a => a.BookCodeNavigation).ToList().GroupBy(a => a.BookCode);
             return View(inventory);
         }
         [HttpPost]
         public IActionResult InventoryCodeDetail(InventorySearchModel searchModel)
         {
-            IQueryable<LmsInventory> query = _Context.LmsInventories;
+            
+            IQueryable<LmsInventory> query = _Context.LmsInventories.Include(a => a.BookGenre);
 
             if (!string.IsNullOrEmpty(searchModel.BookTitle))
             {
-                query = query.Where(a=> a.BookTitle == searchModel.BookTitle);  
+                query = query.Where(a => a.BookTitle == searchModel.BookTitle);
             }
 
             if (searchModel.BookCode is not null)
             {
-                query = query.Where(a => a.BookCode == searchModel.BookCode);
+                query = query.Where(a => a.BookCodeNavigation.Code == searchModel.BookCode);
             }
 
             if (searchModel.IsIssued is not null)
@@ -40,13 +41,13 @@ namespace LibraryManagementSystem.Controllers
                 query = query.Where(a => a.IsIssued == searchModel.IsIssued);
             }
 
-            if(searchModel.FromDate is not null)
+            if (searchModel.FromDate is not null)
             {
                 var date = Convert.ToDateTime(searchModel.FromDate).Date;
                 query = query.Where(a => a.CreatedDate >= date);
             }
 
-            if(searchModel.ToDate is not null)
+            if (searchModel.ToDate is not null)
             {
                 var date = Convert.ToDateTime(searchModel.ToDate).Date.AddDays(1).AddSeconds(-1);
                 query = query.Where(a => a.CreatedDate <= date);
@@ -60,8 +61,13 @@ namespace LibraryManagementSystem.Controllers
         [HttpGet]
         public IActionResult Create_Inventory()
         {
+
             ViewData["BookCode"] = _Context.LmsInventoryCodes.Select(a =>
-                             new SelectListItem { Value = a.Id.ToString(), Text = a.Code }).ToList();
+                             new SelectListItem { Value = a.Id.ToString(), Text = a.CodeDescription }).ToList();
+
+            ViewData["BookGenre"] = _Context.LmsBookGenres.Select(a =>
+            new SelectListItem { Value = a.BookGenreId.ToString(), Text = a.BookGenre }).ToList();
+
             return View(new LmsInventory());
         }
 
@@ -79,14 +85,14 @@ namespace LibraryManagementSystem.Controllers
         {
 
             string path = "wwwroot/InventoryImages";
-            
+
             var files = Request.Form.Files;
 
-            if(files.Count > 0)
+            if (files.Count > 0)
             {
                 var file = files["ImagePath"];
 
-                if(file.Length > 0)
+                if (file.Length > 0)
                 {
                     if (!Directory.Exists(path))
                     {
@@ -110,17 +116,17 @@ namespace LibraryManagementSystem.Controllers
                 _Context.SaveChanges();
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View();
             }
-            
+
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int lm)
         {
-            var inventory = _Context.LmsInventories.FirstOrDefault(a=> a.Id == lm);
+            var inventory = _Context.LmsInventories.FirstOrDefault(a => a.Id == lm);
             if (inventory is not null)
             {
                 _Context.Remove(inventory);
@@ -133,10 +139,14 @@ namespace LibraryManagementSystem.Controllers
         public IActionResult Edit(int lm)
         {
             ViewData["BookCode"] = _Context.LmsInventoryCodes.Select(a =>
-                             new SelectListItem { Value = a.Id.ToString(), Text = a.Code }).ToList();
-            var Edit = _Context.LmsInventories.FirstOrDefault(a=> a.Id == lm);
+                             new SelectListItem { Value = a.Id.ToString(), Text = a.CodeDescription }).ToList();
 
-            if(Edit is not null)
+            ViewData["BookGenre"] = _Context.LmsBookGenres.Select(a =>
+            new SelectListItem { Value = a.BookGenreId.ToString(), Text = a.BookGenre }).ToList();
+
+            var Edit = _Context.LmsInventories.FirstOrDefault(a => a.Id == lm);
+
+            if (Edit is not null)
             {
                 return View(Edit);
             }
@@ -186,7 +196,7 @@ namespace LibraryManagementSystem.Controllers
         public IActionResult Copy(int InventoryId)
         {
 
-            var inventory = _Context.LmsInventories.Find(InventoryId);
+            var inventory = _Context.LmsInventories.Include(a=>a.BookGenre).FirstOrDefault(a=>a.Id == InventoryId);
 
             if (inventory is not null)
             {
@@ -197,7 +207,7 @@ namespace LibraryManagementSystem.Controllers
                         BookAuthor = inventory.BookAuthor,
                         BookCode = inventory.BookCode,
                         BookTitle = inventory.BookTitle,
-                        BookGenre = inventory.BookGenre,
+                        BookGenreId = inventory.BookGenreId,
                         BookVersion = inventory.BookVersion,
                         ImagePath = inventory.ImagePath,
                         IsIssued = false,
@@ -210,7 +220,7 @@ namespace LibraryManagementSystem.Controllers
                 {
 
                     TempData["key"] = $"There was an error Copying this Inventory{InventoryId}{ex.Message}";
-                    
+
                 }
             }
 
@@ -219,7 +229,7 @@ namespace LibraryManagementSystem.Controllers
         [HttpGet]
         public IActionResult InventoryCodeDetail(int Code)
         {
-            var list = _Context.LmsInventories.Where(a => a.BookCode == Code);
+            var list = _Context.LmsInventories.Include(a => a.BookGenre).Where(a => a.BookCode == Code);
             return View(list.ToList());
         }
 

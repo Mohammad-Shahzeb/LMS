@@ -1,14 +1,29 @@
 ﻿@model LibraryManagementSystem.EF_Models.LmsInventoryCode
 
+<style>
+    .mlcustom {
+        margin-left: 15px !important;
+    }
+</style>
+
 <h3>Create Inventory Code</h3>
 
 <form asp-action="CreateInventoryCode">
-    <label>Book Code:</label><br />
-    <input type="text" class="form-control" asp-for=Code/>
-    <span asp-validation-for="Code" class="text-danger"></span>
 
-    <button class="btn btn-primary" type="submit">Submit</button>
-    <a asp-action="Index" class="btn btn-info">Cancel</a>
+    <div>
+        <label>Book Code:</label><br />
+        <input type="text" class="form-control" asp-for=Code />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+  
+    <div>
+        <label>Code Description:</label><br />
+        <input type="text" class="form-control" asp-for="CodeDescription"/>
+        <span asp-validation-for="CodeDescription" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+    <a asp-action="Index" class="btn btn-info mt-2 mlcustom">Cancel</a>
 </form>
 
 @section Scripts{

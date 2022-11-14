@@ -19,7 +19,7 @@ namespace LibraryManagementSystem.Controllers
         {
 
             HttpContext.Session.SetString("MyKey", "shaab");
-            var list = _context.LmsInventoryHistories.Include(a=> a.Staff).Include(a=> a.Student).Include(a=> a.Inventory)
+            var list = _context.LmsInventoryHistories.Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory).Include(a => a.EntryType)
                 .ToList();
             return View(list);
         }
@@ -27,28 +27,28 @@ namespace LibraryManagementSystem.Controllers
         [HttpPost]
         public IActionResult Index(InventoryHistorySearchModel searchModel)
         {
-            var query = _context.LmsInventoryHistories.Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
-               
-            if(!string.IsNullOrEmpty(searchModel.StudentName))
+            var query = _context.LmsInventoryHistories.Include(a => a.EntryType).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
+
+            if (!string.IsNullOrEmpty(searchModel.StudentName))
             {
-                query = query.Where(a => a.Student.FirstName == searchModel.StudentName).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
+                query = query.Where(a => a.Student.FirstName == searchModel.StudentName).Include(a => a.EntryType).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
             }
 
             if (!string.IsNullOrEmpty(searchModel.StaffName))
             {
-                query = query.Where(a => a.Staff.FirstName == searchModel.StaffName).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
+                query = query.Where(a => a.Staff.FirstName == searchModel.StaffName).Include(a => a.EntryType).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
 
             }
 
             if (!string.IsNullOrEmpty(searchModel.InventoryTitle))
             {
-                query = query.Where(a => a.Inventory.BookTitle == searchModel.InventoryTitle).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
+                query = query.Where(a => a.Inventory.BookTitle == searchModel.InventoryTitle).Include(a=>a.EntryType).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
 
             }
 
             if (!string.IsNullOrEmpty(searchModel.EntryType))
             {
-                query = query.Where(a => a.EntryType == searchModel.EntryType).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
+                query = query.Where(a => a.EntryTypeId.ToString() == searchModel.EntryType).Include(a=>a.EntryType).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory);
 
             }
 
@@ -103,8 +103,9 @@ namespace LibraryManagementSystem.Controllers
             }
             return RedirectToAction("Index");
         }
-        public IActionResult InventoryTimeline(int inventoryId) {
-            var list = _context.LmsInventoryHistories.Where(a=> a.InventoryId == inventoryId).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory)
+        public IActionResult InventoryTimeline(int inventoryId)
+        {
+            var list = _context.LmsInventoryHistories.Where(a => a.InventoryId == inventoryId).Include(a => a.Staff).Include(a => a.Student).Include(a => a.Inventory)
                 .ToList();
             return View(list);
         }
